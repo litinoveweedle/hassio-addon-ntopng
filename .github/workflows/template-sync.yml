@@ -1,8 +1,11 @@
+---
 name: Template-sync
+
+# yamllint disable-line rule:truthy
 on:
   # cronjob trigger
   schedule:
-  - cron: "0 0 1 * *"
+    - cron: "0 0 1 * *"
   # manual trigger
   workflow_dispatch:
 jobs:
