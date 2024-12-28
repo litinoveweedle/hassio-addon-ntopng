@@ -1,5 +1,5 @@
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:7.1.0
 # hadolint ignore=DL3006
-ARG BUILD_FROM
 FROM ${BUILD_FROM}
 
 # Set shell
@@ -13,7 +13,10 @@ ARG NETFLOW2NG_VERSION
 
 COPY Makefile /tmp
 
+WORKDIR /tmp
+
 # Install prerequisities
+# hadolint ignore=DL3008
 RUN sed -i -e's/ main/ main contrib/g' /etc/apt/sources.list.d/debian.sources \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -106,7 +109,6 @@ RUN sed -i -e's/ main/ main contrib/g' /etc/apt/sources.list.d/debian.sources \
     libxft2 \
     libzmq5 \
 # Build and install all software
-    && cd /tmp \
     && git clone --depth 1 --branch ${NDPI_VERSION} https://github.com/ntop/nDPI.git nDPI \
     && git clone --depth 1 --branch ${NTOP_VERSION} https://github.com/ntop/ntopng.git ntopng \
     && git clone --depth 1 --branch ${NETFLOW2NG_VERSION} https://github.com/synfinatic/netflow2ng.git netflow2ng \
