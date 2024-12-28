@@ -7,9 +7,9 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Setup base system
 ARG BUILD_ARCH
-ARG NDPI_VERSION
-ARG NTOP_VERSION
-ARG NETFLOW2NG_VERSION
+ARG NDPI_VERSION="4.8-stable"
+ARG NTOP_VERSION="5.6-stable"
+ARG NETFLOW2NG_VERSION="v0.0.4"
 
 COPY Makefile /tmp
 
