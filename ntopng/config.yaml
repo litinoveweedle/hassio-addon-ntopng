@@ -62,4 +62,3 @@ schema:
   export_flows: "str?"
   geoip_account_id: "int?"
   geoip_license_key: "str?"
-
